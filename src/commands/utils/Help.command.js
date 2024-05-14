@@ -21,7 +21,9 @@ export default class extends Command {
             .setImage('https://di.phncdn.com/videos/202002/07/282615582/original/(m=eaAaGwObaaaa)(mh=-0g5xaCaQILuCmvo)1.jpg')
             .setColor('#ffa31a')
 
-        interaction.editReply({ embeds: [embed]})
+        const btn = new ButtonBuilder().setLabel('Source Code').setStyle('Link').setURL('https://github.com/tysaiwofc/pornhub-bot')
+        const row = new ActionRowBuilder().addComponents(btn)
+        interaction.editReply({ embeds: [embed], components: [row]})
             
     }
 }
