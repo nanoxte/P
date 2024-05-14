@@ -30,12 +30,11 @@ export default class extends Command {
         const param = interaction.options.getString('video')
         const video = await fetchVideosFromXvideox(param).catch(() => {})
         if(!video) return interaction.editReply({ content: "Unable to load page."})
-        const videoInformation = await getVideoInformationFromXvideox(video.path).catch(() => {})
-        const views =  String(videoInformation.views).match(/\d{1,3}\.\d+k Views/)
+        const videoInformation = await getVideoInformationFromXvideox(video.path).catch(() => {}) 
         const embed = new EmbedBuilder()
             .setTitle(String(video.title).slice(0, 80))
             .setImage(videoInformation.image)
-            .setDescription(`**Id:** ${video.id}\n**Views:** ${Number(stringParaNumeroVisualizacoes(String(views))).toLocaleString('en-US')}\\n**Quality:** ${video.quality}\n`)
+            .setDescription(`**Id:** ${video.id}\n**Views:** ${Number(stringParaNumeroVisualizacoes(String(videoInformation.views))).toLocaleString('en-US')}\\n**Quality:** ${video.quality}\n`)
             .setColor('#ff0000')
 
           
