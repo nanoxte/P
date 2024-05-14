@@ -1,4 +1,6 @@
+import { load } from 'cheerio';
 import xvideos from 'xvideosx';
+import fs from 'node:fs'
 
 export async function getVideosFromXvideox() {
     const fresh = await xvideos.videos.fresh({page: 1})
@@ -16,4 +18,34 @@ export async function getTheBestVideosFromXvideox() {
     return bestList?.videos
 }
 
-//getVideosFromXvideox().then(data => console.log(data))
+export async function fetchVideosFromXvideox(param) {
+    const response = await fetch('https://www.xvideos.com/?k=' + String(param).toLocaleLowerCase().split('+'))
+    const html = await response.text()
+    const $ = load(html)
+    const pattern = /^video_\d+$/
+    const videosContainer = $('*').filter((i, el) => {
+        const id = $(el).attr('id')
+        return id && pattern.test(id)
+    }).map((i, el) => {
+        const id = $(el).attr('data-id')
+        const url = $(el).children().eq(1).find('.title').children().eq(0).attr('href') // FINALMENTE ISSO FUNCIOU
+        const title = $(el).children().eq(1).find('.title').first().text()
+        const thumbnail = $(el).children().eq(0).find('.thumb').children().eq(0).children().eq(0).attr('data-src')
+        //
+        const quality = $(el).children().eq(0).find('.thumb').children().eq(0).find('.video-hd-mark').text()
+        return {
+            url: 'https://xvideos.com' + url, 
+            id, // https://discord.gg/RH7EcBzKkH
+            title,
+            thumbnail,
+            quality
+        }
+    })
+
+    return videosContainer[~~(Math.random() * videosContainer.length)]
+    // fs.writeFile('xv.html', html, () => {
+
+    // })
+}
+
+//fetchVideosFromXvideox("stepsis").then(data => console.log(data))
