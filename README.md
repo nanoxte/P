@@ -1,8 +1,8 @@
 # Porn Hub BOT
 
-![GitHub repo size](https://img.shields.io/github/repo-size/LunaryLabs/LunaryBot?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/LunaryLabs/LunaryBot?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/LunaryLabs/LunaryBot?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/tysaiwofc/pornhub-bot?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/tysaiwofc/pornhub-bot?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/tysaiwofc/pornhub-bot?style=for-the-badge)
 
 
 ## 💻 Pré-requisitos
