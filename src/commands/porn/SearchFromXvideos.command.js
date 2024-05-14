@@ -32,18 +32,18 @@ export default class extends Command {
         const video = await fetchVideosFromXvideox(param).catch(() => {})
         if(!video) return interaction.editReply({ content: "Unable to load page."})
         const videoInformation = await getVideoInformationFromXvideox(video.path).catch(() => {})
-
+        const views =  String(videoInformation.views).match(/\d{1,3}\.\d+k Views/)
         const embed = new EmbedBuilder()
             .setTitle(String(video.title).slice(0, 80))
             .setImage(videoInformation.image)
-            .setDescription(`**Duration:** ${video.quality}\n**Id:** ${video.id}`)
+            .setDescription(`**Id:** ${video.id}\n**Views:** ${Number(stringParaNumeroVisualizacoes(views)).toLocaleString('en-US')}\\n**Duration:** ${video.quality}\n`)
             .setColor('#ff0000')
 
           
         const btn = new ButtonBuilder()
             .setLabel('View')
             .setStyle('Link')
-            .setURL(video.url)
+            .setURL(String(video.url).replace('xvideos3', 'xvideos'))
 
         const row = new ActionRowBuilder().addComponents(btn)
 
