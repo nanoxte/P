@@ -25,16 +25,18 @@ export default class extends Command {
         //console.log(random.views)
         const videoInfo = await getVideoInformationFromXvideox(random.path).catch(() => {})
         //console.log(videoInfo.image)
+
+        const views =  String(random.views).match(/\d{1,3}\.\d+k Views/)
         const embed = new EmbedBuilder()
             .setTitle(String(random.title).slice(0, 80))
-            .setDescription(`**Views:** ${Number(stringParaNumeroVisualizacoes(random.views)).toLocaleString('en-US')}\n**Duration:** ${random.duration}`)
+            .setDescription(`**Views:** ${Number(stringParaNumeroVisualizacoes(views)).toLocaleString('en-US')}\n**Duration:** ${random.duration}`)
             .setImage(videoInfo.image)
             .setColor('#ff0000')
         
         const btn = new ButtonBuilder()
             .setLabel('View')
             .setStyle('Link')
-            .setURL(String(random.url).replace('xvideos3', 'xvideos'))
+            .setURL(String(random.url).replace('xvideos3', ))
 
         const row = new ActionRowBuilder()
             .addComponents(btn)
