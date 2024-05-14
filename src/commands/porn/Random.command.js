@@ -9,6 +9,8 @@ export default class extends Command {
             name: 'random',
             description: "Receive random videos from pornhub",
             nsfw: true,
+            integrationTypes: [0, 1],
+            contexts: [0, 1, 2],
             ephemeral: false,
         })
     }

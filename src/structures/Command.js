@@ -17,7 +17,7 @@ export default class Command {
         this.guildOnly = options.guildOnly ||false     
         this.dm_permission = options.dm_permission || false
         this.contexts = options.context || [0]
-        this.integration_types = options.integration_types || [0]
+        this.integration_types = options.integrationTypes || [0]
         this.aliases = options.aliases || []
         this.interactionOnly = options.interactionOnly || false
     }

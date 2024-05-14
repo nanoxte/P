@@ -9,6 +9,8 @@ export default class extends Command {
             name: 'pornhub',
             description: "Search for models on pornhub.com",
             nsfw: true,
+            integrationTypes: [0, 1],
+            contexts: [0, 1, 2],
             options: [
                 {
                     type: 3,

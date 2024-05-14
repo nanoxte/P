@@ -156,6 +156,6 @@ export async function getVideosFromWebPage() {
     return [...obj]
 }
 
-getVideosFromWebPage().then(data => console.log(data))
+//getVideosFromWebPage().then(data => console.log(data))
 // Tests
 //  fetchModel('Riley Reid').then(data => console.log(data))
