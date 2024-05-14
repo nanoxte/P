@@ -55,7 +55,7 @@ export default class extends Command {
     });
         
     const row = new ActionRowBuilder().addComponents(botoes)
-    const msg = await interaction.editReply({ embeds: [embed],files: [image], components: botoes.length > 0 ? [row] : [], fetchReply: true })
+    await interaction.editReply({ embeds: [embed],files: [image], components: botoes.length > 0 ? [row] : [], fetchReply: true })
 
     }
 }

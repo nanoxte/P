@@ -43,14 +43,14 @@ export function stringParaNumeroVisualizacoes(string) {
 
     // Verifique se há "M" para multiplicar o número por 1 milhão
 
-    if (string.includes('B')) {
+    if (string.toLowerCase().includes('b')) {
         numero *= 10000000;
     }
-    if (string.includes('M')) {
+    if (string.toLowerCase().includes('m')) {
         numero *= 1000000;
     }
 
-    if(string.includes("K")) {
+    if(string.toLowerCase().includes("k")) {
         numero *= 100000
     }
 
@@ -62,9 +62,9 @@ export async function getModelById(id) {
     const response = await fetch('https://www.pornhub.com/pornstar/' + id);
     //console.log(response.ok)
     const html = await response.text();
-    fs.writeFile('i.html', html, () => {
+    // fs.writeFile('i.html', html, () => {
 
-    })
+    // })
 
     const $ = load(html);
     const element = $('.profileInfoShortBlock').first()

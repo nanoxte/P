@@ -9,7 +9,9 @@
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
     "node-cron": "^3.0.3",
     "path": "^0.12.7",
-    "url": "^0.11.3"
+    "url": "^0.11.3",
+    "xvideos": "^0.0.4",
+    "xvideosx": "^1.6.4"
   },
   "name": "pornhubbot",
   "type": "module",

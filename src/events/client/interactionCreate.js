@@ -9,7 +9,7 @@ export default class extends Command {
 
     run = async (interaction) => {
 
-        console.log(interaction.id)
+        //console.log(interaction.id)
 
         const cmd = this.client.commands.find(command => command.name === interaction?.commandName)
         const component = this.client.components.find(comp => comp.id === interaction?.customId)
