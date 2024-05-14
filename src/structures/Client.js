@@ -8,12 +8,9 @@ export default class Bot extends Client {
     constructor(options) {
         super(options);
         this.commands = new Array()
-        this.roleall = new Array() 
-        this.vanilla = new Array()
         this.components = new Array()
         this.events = new Array()
         this.log = new Debugger()
-        this.partys = new Collection()
         this.#loadCommands()
         this.#loadEvents()
         this.#loadComponents()
