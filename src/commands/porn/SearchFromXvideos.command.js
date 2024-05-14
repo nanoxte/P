@@ -2,8 +2,7 @@
 import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
 import { fetchModel } from "../../utils/PornModelExecute.js";
 import Command from "../../structures/Command.js";
-import { fetchVideosFromXvideox, getVideoInformationFromXvideox } from "../../utils/XvideosModelExecute.js";
-import { maxResolution } from "../../utils/ImageOptimizer.js";
+import { fetchVideosFromXvideox, getVideoInformationFromXvideox, stringParaNumeroVisualizacoes } from "../../utils/XvideosModelExecute.js";
 
 export default class extends Command {
     constructor(client) {
