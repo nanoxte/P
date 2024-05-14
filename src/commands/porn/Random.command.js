@@ -1,5 +1,5 @@
 
-import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
 import { getRandomVideo } from "../../utils/PornModelExecute.js";
 import Command from "../../structures/Command.js";
 

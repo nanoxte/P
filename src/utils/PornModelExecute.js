@@ -138,11 +138,12 @@ export async function getVideosFromWebPage() {
         const title = $(element).find('.thumbnailTitle').text()
         const url = $(element).find('.thumbnailTitle').attr('href')
         const thumbnail = $(element).find('.videoThumb').attr('src')
+        const duration = $(element).find('.time').text()
 
-        //DISCORD, QUEM QUISER TESTAR KK MANDA DM
         return {
             views: stringParaNumeroVisualizacoes(views),
             rating,
+            duration: duration.trim(),
             thumbnail,
             title: title.trim(),
             url: 'https://pornhub.com' + url,
@@ -155,6 +156,6 @@ export async function getVideosFromWebPage() {
     return [...obj]
 }
 
-//getRandomVideo().then(data => console.log(data))
+getVideosFromWebPage().then(data => console.log(data))
 // Tests
 //  fetchModel('Riley Reid').then(data => console.log(data))

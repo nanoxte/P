@@ -45,55 +45,15 @@ export default class extends Command {
         // Criar um botão para cada objeto
         if(index < 4) {
             const botao = new ButtonBuilder()
-            .setStyle('Primary') // Definir estilo do botão como link
+            .setStyle('Link') // Definir estilo do botão como link
             .setLabel(objeto.title.slice(0, 10) + '...')
-            .setCustomId(`videos${index}`)
+            .setURL(objeto.href)
             botoes.push(botao); // Adicionar o botão ao array de botões
         }
     });
         
     const row = new ActionRowBuilder().addComponents(botoes)
     const msg = await interaction.editReply({ embeds: [embed],files: [image], components: botoes.length > 0 ? [row] : [], fetchReply: true })
-    const col = msg.createMessageComponentCollector({ filter: i => i, time: 200000})
-    col.on('collect', async i => {
-        const party = interaction.client.partys.get(interaction.user.id)
-        if(party && party.users.includes(i.user.id)) return i.reply({ content: "You are already participating in this party", ephemeral: true})
-        if(i.customId.includes('join') && i.user.id === interaction.user.id) return i.reply({ content: 'You cannot rejoin your own party', ephemeral: true})
-        if(!i.customId.includes('join') && i.user.id !== interaction.user.id) return i.reply({ content: "This button is not for you, try using the same command.", ephemeral: true})
-        const option = i.customId.slice(i.customId.length - 1)
 
-        const btnc = new ButtonBuilder().setStyle('Primary').setLabel('Join the Party').setCustomId('join' + option)
-        const rown = new ActionRowBuilder().addComponents(btnc)
-
-        i.update({ components: [rown]})
-        const exist = interaction.channel.threads.cache.find(x => x.name === `${model.videos[option].title}`)
-        if(exist) {
-            exist.send(`${i.user} joined.`)
-            if(party) {
-                party.users = [...party.users, i.user.id]
-            }
-        } else {
-            if(!party) {
-                interaction.client.partys.set(interaction.user.id, { users: [interaction.user.id]})
-            }
-
-            const thread = await interaction.channel.threads.create({
-                name: `${model.videos[option].title}`,
-                reason: 'Search PornHub Videos'
-            })
-
-            const embed2 = new EmbedBuilder().setTitle(String(model.videos[option].title).slice(0, 100)).setColor('#ffa31a')
-            .setDescription(`**__Views:__** ${Number(model.videos[option].views).toLocaleString('en-US')}`)
-            .setImage(model.videos[option].src)
-
-            const btn2 = new ButtonBuilder().setStyle('Link').setLabel('View Page').setURL(model.videos[option].href)
-            const row2 = new ActionRowBuilder().addComponents(btn2)
-            thread.send({
-                content: `${interaction.user}`,
-                embeds: [embed2],
-                components: [row2]
-            })
-        }
-    })
     }
 }

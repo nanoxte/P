@@ -1,6 +1,6 @@
 
-import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
-import { getRandomVideo } from "../../utils/PornModelExecute.js";
+import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
+
 import Command from "../../structures/Command.js";
 
 export default class extends Command {
