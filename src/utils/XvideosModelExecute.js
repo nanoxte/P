@@ -34,7 +34,8 @@ export async function fetchVideosFromXvideox(param) {
         //
         const quality = $(el).children().eq(0).find('.thumb').children().eq(0).find('.video-hd-mark').text()
         return {
-            url: 'https://xvideos.com' + url, 
+            url: 'https://xvideos.com' + url,
+            path: url,
             id, // https://discord.gg/RH7EcBzKkH
             title,
             thumbnail,

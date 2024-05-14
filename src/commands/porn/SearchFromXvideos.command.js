@@ -2,7 +2,7 @@
 import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
 import { fetchModel } from "../../utils/PornModelExecute.js";
 import Command from "../../structures/Command.js";
-import { fetchVideosFromXvideox } from "../../utils/XvideosModelExecute.js";
+import { fetchVideosFromXvideox, getVideoInformationFromXvideox } from "../../utils/XvideosModelExecute.js";
 import { maxResolution } from "../../utils/ImageOptimizer.js";
 
 export default class extends Command {
@@ -31,10 +31,11 @@ export default class extends Command {
         const param = interaction.options.getString('video')
         const video = await fetchVideosFromXvideox(param).catch(() => {})
         if(!video) return interaction.editReply({ content: "Unable to load page."})
-        //const attachment = new AttachmentBuilder(buffer, { name: 'image.jpeg'})
+        const videoInformation = await getVideoInformationFromXvideox(video.path).catch(() => {})
+
         const embed = new EmbedBuilder()
             .setTitle(String(video.title).slice(0, 30))
-            .setImage(video.thumbnail)
+            .setImage(videoInformation.image)
             .setDescription(`**Duration:** ${video.quality}\n**Id:** ${video.id}`)
             .setColor('#ff0000')
 
