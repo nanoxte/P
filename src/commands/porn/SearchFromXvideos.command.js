@@ -34,7 +34,7 @@ export default class extends Command {
         const embed = new EmbedBuilder()
             .setTitle(String(video.title).slice(0, 80))
             .setImage(videoInformation.image)
-            .setDescription(`**Id:** ${video.id}\n**Views:** ${Number(stringParaNumeroVisualizacoes(String(videoInformation.views))).toLocaleString('en-US')}\\n**Quality:** ${video.quality}\n`)
+            .setDescription(`**Id:** ${video.id}\n**Views:** ${Number(stringParaNumeroVisualizacoes(String(videoInformation.views))).toLocaleString('en-US')}\n**Quality:** ${video.quality}\n`)
             .setColor('#ff0000')
 
           
