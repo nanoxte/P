@@ -34,7 +34,7 @@ export default class extends Command {
         const videoInformation = await getVideoInformationFromXvideox(video.path).catch(() => {})
 
         const embed = new EmbedBuilder()
-            .setTitle(String(video.title).slice(0, 30))
+            .setTitle(String(video.title).slice(0, 80))
             .setImage(videoInformation.image)
             .setDescription(`**Duration:** ${video.quality}\n**Id:** ${video.id}`)
             .setColor('#ff0000')
