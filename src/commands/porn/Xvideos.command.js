@@ -34,7 +34,7 @@ export default class extends Command {
         const btn = new ButtonBuilder()
             .setLabel('View')
             .setStyle('Link')
-            .setURL(random.url)
+            .setURL(String(random.url).replace('xvideos3', 'xvideos'))
 
         const row = new ActionRowBuilder()
             .addComponents(btn)
