@@ -34,7 +34,8 @@ export async function fetchModel(url) {
  
 }
 
-export function stringParaNumeroVisualizacoes(string) {
+export function stringParaNumeroVisualizacoes(params) {
+    const string = String(params[0])
     // Remova todos os caracteres que não são números ou ponto
     const numeroString = string.replace(/[^\d.]/g, '');
 
