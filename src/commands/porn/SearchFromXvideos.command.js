@@ -1,8 +1,32 @@
 
 import { ActionRowBuilder, AttachmentBuilder, ButtonBuilder, EmbedBuilder } from "discord.js";
-import { stringParaNumeroVisualizacoes } from "../../utils/PornModelExecute.js";
 import Command from "../../structures/Command.js";
 import { fetchVideosFromXvideox, getVideoInformationFromXvideox } from "../../utils/XvideosModelExecute.js";
+
+
+export function stringParaNumeroVisualizacoes(params) {
+    const string = String(params[0])
+    // Remova todos os caracteres que não são números ou ponto
+    const numeroString = string.replace(/[^\d.]/g, '');
+
+    // Converta a string para um número
+    let numero = parseFloat(numeroString);
+
+    // Verifique se há "M" para multiplicar o número por 1 milhão
+
+    if (string.toLowerCase().includes('b')) {
+        numero *= 10000000;
+    }
+    if (string.toLowerCase().includes('m')) {
+        numero *= 1000000;
+    }
+
+    if(string.toLowerCase().includes("k")) {
+        numero *= 100000
+    }
+
+    return numero;
+}
 
 export default class extends Command {
     constructor(client) {
