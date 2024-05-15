@@ -22,9 +22,9 @@ export default class extends Command {
         if(!response) return interaction.editReply({ content: 'Unable to find model, please try again later'})
         const random = response[~~(Math.random() * response.length)]
 
-        console.log(random)
+        //console.log(random)
         const videoInfo = await getVideoInformationFromXvideox(random.path).catch(() => {})
-        console.log(videoInfo.image)
+        //console.log(videoInfo.image)
 
         const views =  String(random.views).match(/\d{1,3}\.\d+k Views/)
         const embed = new EmbedBuilder()
