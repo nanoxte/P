@@ -26,10 +26,10 @@ export default class extends Command {
         const videoInfo = await getVideoInformationFromXvideox(random.path).catch(() => {})
         //console.log(videoInfo.image)
 
-        const views =  String(random.views).match(/\d{1,3}\.\d+k Views/)
+
         const embed = new EmbedBuilder()
             .setTitle(String(random.title).slice(0, 80))
-            .setDescription(`**Views:** ${Number(stringParaNumeroVisualizacoes(views)).toLocaleString('en-US')}\n**Duration:** ${random.duration}`)
+            .setDescription(`**Duration:** ${random.duration}`)
             .setImage(videoInfo.image)
             .setColor('#ff0000')
         
