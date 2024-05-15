@@ -36,13 +36,24 @@ export async function fetchModel(url) {
 
 export function stringParaNumeroVisualizacoes(params) {
     const string = String(params[0])
+    // Remova todos os caracteres que não são números ou ponto
     const numeroString = string.replace(/[^\d.]/g, '');
+
+    // Converta a string para um número
     let numero = parseFloat(numeroString);
 
-    if (string.toLowerCase().includes('b')) return numero *= 10000000;
-    if (string.toLowerCase().includes('m')) return numero *= 1000000;
+    // Verifique se há "M" para multiplicar o número por 1 milhão
 
-    if(string.toLowerCase().includes("k")) return  numero *= 100000
+    if (string.toLowerCase().includes('b')) {
+        numero *= 10000000;
+    }
+    if (string.toLowerCase().includes('m')) {
+        numero *= 1000000;
+    }
+
+    if(string.toLowerCase().includes("k")) {
+        numero *= 100000
+    }
 
     return numero;
 }
