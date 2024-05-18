@@ -5,7 +5,7 @@ export default async function generateImage(string, text) {
 
     const url = `https://image-generation.perchance.org/api/generate?prompt=${prompt}&channel=ai-photo-generator&subChannel=public&userKey=cdee8cdbfbfec59a632c267bca40bedfc75663839962d08f5c8ec3b4d914770a&adAccessCode=868e4b61772be488e0979d99b8d552d0cd9c9f16f10f18353723648e71ce7b8b&requestId=0.724432077256582&__cacheBust=0.7459864648154997`
 
-    const response = await fetch(url).catch(() => {})
+    const response = await fetch(url).catch((er) => { console.log(er)})
     if(!response) return undefined
     const data = await response.json()
     const id = data.imageId

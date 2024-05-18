@@ -30,7 +30,7 @@ export default class extends Command {
         const prompt = interaction.options.getString('prompt')
 
         const txt = interaction?.guild?.name || interaction?.user?.username
-        const buffer = await generateImage(prompt, txt).catch(() => {})
+        const buffer = await generateImage(prompt, txt).catch((er) => { console.log(er)})
         if(!buffer) return interaction.editReply({ content: 'It looks like something went wrong when trying to generate this image, please try again later.'})
         const image = new AttachmentBuilder(buffer, { name: 'porn.png'})
 
