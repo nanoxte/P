@@ -1,8 +1,8 @@
 import { Client, Collection } from "discord.js";
-import { URL } from 'url';
+
 import Debugger from "./Debugger.js";
 import { readdirSync} from 'node:fs'
-
+import { URL } from 'url';
 const __dirname = new URL('../../', import.meta.url).pathname;
 export default class Bot extends Client {
     constructor(options) {
