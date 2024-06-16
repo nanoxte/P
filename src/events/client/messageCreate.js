@@ -10,7 +10,13 @@ export default class extends Command {
 
     run = async (message) => {
 
-        if(message.content === `<@${message.client.user.id}>` || message.content === `<@!${message.client.user.id}>`) {
+        if(message.content === `<@${message.client.user.id}>` && !message.channel.nsfw || message.content === `<@!${message.client.user.id}>` && !message.channel.nsfw) {
+            message.reply({ content: `My commands can only be used on NSFW channels, to discover my commands just type </help:1252018007459369107>`}).then(msg => {
+                setTimeout(() => {
+                    msg?.delete().catch(() => {})
+                }, 5000)
+            })
+        } else if(message.content === `<@${message.client.user.id}>` || message.content === `<@!${message.client.user.id}>`) {
             const btn = new ButtonBuilder()
                 .setStyle('Link')
                 .setLabel('Add App')
@@ -19,7 +25,7 @@ export default class extends Command {
             const row = new ActionRowBuilder()
                 .addComponents(btn)
             
-            message.reply({ content: `Hello, my commands only work on age-restricted channels, use </help:1239753957912346644> to see what I can do`, components: [row]}).then(msg => {
+            message.reply({ content: `Hello, my commands only work on age-restricted channels, use </help:1252018007459369107> to see what I can do`, components: [row]}).then(msg => {
                 setTimeout(() => {
                     msg?.delete().catch(() => {})
                 }, 5000)
