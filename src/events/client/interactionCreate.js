@@ -14,7 +14,9 @@ export default class extends Command {
         const cmd = this.client.commands.find(command => command.name === interaction?.commandName)
         const component = this.client.components.find(comp => comp.id === interaction?.customId)
 
+
         if(cmd) {
+            if(cmd.name !== 'help' && !interaction.channel.nsfw) return interaction.reply({ content: ":x: This command can only be used on NSFW channels.", ephemeral: true})
           try {
                 cmd.run(interaction)
             } catch (er) {

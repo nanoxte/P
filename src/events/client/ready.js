@@ -11,7 +11,7 @@ export default class extends Command {
     }
 
     run = async () => {
-        await this.client.registryCommands()
+        //await this.client.registryCommands()
         console.log(`\x1b[32m[ ${c.white(c.bold('Bot'))} \x1b[32m] ${c.magenta(`Discord bot logged on ${this.client.user.username}#${this.client.user.discriminator}`)}`)
 
     }

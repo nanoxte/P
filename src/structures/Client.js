@@ -11,10 +11,9 @@ export default class Bot extends Client {
         this.components = new Array()
         this.events = new Array()
         this.log = new Debugger()
-        this.#loadCommands()
         this.#loadEvents()
+        this.#loadCommands()
         this.#loadComponents()
-
     }
 
     async registryCommands() {

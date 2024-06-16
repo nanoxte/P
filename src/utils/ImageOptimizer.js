@@ -1,4 +1,6 @@
 import { createCanvas, loadImage } from 'canvas'
+import fs from 'node:fs'
+import tmp from 'tmp'
 
 export async function maxResolution(url) {
     const response = await fetch(url)
